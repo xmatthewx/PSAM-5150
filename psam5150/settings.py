@@ -8,6 +8,7 @@ ADMINS = (
     )
 
 import os
+import os.path
 
 MANAGERS = ADMINS
 

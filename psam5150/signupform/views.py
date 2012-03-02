@@ -4,7 +4,9 @@ from django.contrib.sites.models import get_current_site
 from django.shortcuts import redirect
 from django.contrib import messages
 
-from signupform.forms import HelloWorldForm, SignupForm
+#from signupform.forms import HelloWorldForm, HelloContactForm, SignupForm, ContactForm
+#from signupform.models import HelloWorld, HelloContactForm
+from signupform.forms import HelloWorldForm, SignupForm, ContactForm
 from signupform.models import HelloWorld
 
 
@@ -37,13 +39,39 @@ def hello(request):
     return render_to_response('signup/hello.html', {'hellos': last_hellos}, context_instance=RequestContext(request))
 
 
+#def hellocontact(request):
+#    if request.method == 'POST':
+#        form = HelloContactForm(request.POST)
+#        if form.is_valid():
+#            form.save()
+#            messages.add_message(request, messages.INFO, "Your form has been submitted and will be processed in the order it was received")
+#            return redirect('signup_main')
+#    else:
+#        form = HelloContactForm()
+#    return render_to_response('signup/hellocontact.html', {'form': form}, context_instance=RequestContext(request))
+
+
+
 def sitesignup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST, request.FILES)
-        if form.is_valid() and form.is_multipart():
+        #if form.is_valid() and form.is_multipart():
+        if form.is_valid():
             form.save()
             messages.add_message(request, messages.INFO, "Your form has been submitted and will be processed in the order it was received")
             return redirect('signup_main')
     else:
         form = SignupForm()
     return render_to_response('signup/signup.html', {'form': form}, context_instance=RequestContext(request))
+
+
+def sitecontact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.INFO, "Your form has been submitted and will be processed in the order it was received")
+            return redirect('signup_main')
+    else:
+        form = ContactForm()
+    return render_to_response('signup/contact.html', {'form': form}, context_instance=RequestContext(request))
