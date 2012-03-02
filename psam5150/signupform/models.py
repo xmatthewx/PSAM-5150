@@ -40,8 +40,10 @@ class Contact(models.Model):
     email = models.EmailField()
     street_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
-    state = models.CharField(max_length=100)
-    zipcode = models.CharField(max_length=100)
+    state = models.CharField(max_length=2)
+    zipcode = models.CharField(max_length=10)
+#    subject = models.CharField(max_length=200)
+#    question = models.TextField(max_length=500)
     is_accepted = models.BooleanField(default=False)
     admin_comments = models.TextField(blank=True, null=True)
 
