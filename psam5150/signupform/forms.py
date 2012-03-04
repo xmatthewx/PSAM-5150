@@ -27,6 +27,6 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'street_address',  'city', 'state',  'zipcode' ]
-#       fields = ['name', 'email', 'street_address',  'city',  'state',  'zipcode',  'subject', 'question']
+#       fields = ['name', 'email', 'street_address',  'city', 'state',  'zipcode' ]
+        fields = ['name', 'email', 'street_address',  'city',  'state',  'zipcode',  'subject', 'question']
 
