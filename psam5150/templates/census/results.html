@@ -1,0 +1,22 @@
+{% extends "census/main.html" %}
+
+{% block title %}{{ title|capfirst }} Signup yipee! {% endblock %}
+
+{% block body %}
+
+<h1>{{ poll.question }}</h1>
+
+<ul>
+{% for choice in poll.choice_set.all %}
+    <li>{{ choice.choice }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="/polls/{{ poll.id }}/">Vote again?</a>
+
+
+
+{% endblock %}
+
+
+

@@ -118,6 +118,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'signupform',
     'gameshow',
+    'census',
     )
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

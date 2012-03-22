@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>{% block title %}{{ title|capfirst }} Signup{% endblock %}</title>
+    
+    <link rel="stylesheet" type="text/css" media="all" href="style.css" />
+    <style>
+        #container, a {    -moz-border-radius: 4px;
+             -webkit-border-radius: 4px;
+             border-radius: 4px;
+
+        }
+        
+        a { padding:2px 4px; background:#666; color:white; text-decoration:none; }
+        a:hover { background:#333; }
+            
+        #container { width:80%; margin:1em auto; background:#eee; border:1px solid #ddd; padding:.5em 20px; }
+        label { display:block; }
+        li { margin:.5em 0;}
+    </style>
+    
+</head>
+<body>
+    <div id="container">
+        <a href="{% url census_main %}">Home</a>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% block body %}
+        <ul>
+            <li>Fill out the <a href="{% url site_census %}">census</a>!</li>
+        </ul>
+        {% endblock %}
+    </div>
+</body>
+</html>

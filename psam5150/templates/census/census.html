@@ -1,0 +1,11 @@
+{% extends "census/main.html" %}
+
+{% block title %}{{ title|capfirst }} Signup yipee! {% endblock %}
+
+{% block body %}
+    <form enctype="multipart/form-data" action="{% url site_census %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+        </form>
+{% endblock %}
