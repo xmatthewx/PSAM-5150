@@ -9,6 +9,7 @@ from django.contrib import messages
 
 from census.forms import CensusFork
 from census.models import CensusInfo
+from census.results import yourmomma
 
 def censushome(request):
     return render_to_response('census/main.html', context_instance=RequestContext(request))
@@ -24,3 +25,14 @@ def sitecensus(request):
     else:
         form = CensusFork()
     return render_to_response('census/census.html', {'form': form}, context_instance=RequestContext(request))
+
+
+def censusresults(request):
+    return render_to_response('census/results.html', context_instance=RequestContext(request))
+    
+    
+def peoplecount():
+    peoplecount = census.length
+    print "there are %d people" %peoplecount
+    
+

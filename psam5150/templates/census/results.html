@@ -4,16 +4,13 @@
 
 {% block body %}
 
-<h1>{{ poll.question }}</h1>
+<h1>Census Data</h1>
 
-<ul>
-{% for choice in poll.choice_set.all %}
-    <li>{{ choice.choice }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+{% load results_fx %}
 
-<a href="/polls/{{ poll.id }}/">Vote again?</a>
+.... hello.....
 
+thanks!
 
 
 {% endblock %}
