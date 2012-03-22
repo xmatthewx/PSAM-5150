@@ -35,8 +35,11 @@ def sitecensus(request):
 
 def censusresults(request):
     peoplecount = len(CensusInfo.objects.all())
-    nycount = len(State.objects.all())
-    return render_to_response('census/results.html', {'people': peoplecount, 'ny': nycount})
+    # census.objects.values()
+    men = len(CensusInfo.objects.filter(gender="M"))
+    males = CensusInfo.objects.filter(gender="M")
+    nycount = len(CensusInfo.objects.values('state'))
+    return render_to_response('census/results.html', {'people': peoplecount, 'men': men, 'ny': nycount, })
 
 
 #def statearchive(request, state):
@@ -47,9 +50,6 @@ def statearchive(request):
     return render_to_response('census/state_archive.html', {'people': s_list})
 
     
-    
-def peoplecount():
-    peoplecount = census.length
-    print "there are %d people" %peoplecount
+
     
 
