@@ -1,0 +1,20 @@
+{% extends "census/main.html" %}
+
+{% block title %}{{ title|capfirst }} Signup yipee! {% endblock %}
+
+{% block body %}
+
+<h1>State Archive</h1>
+
+{{ census.length }}
+
+{% for state in state_list %}
+    <p>{{ state.id }}</p>
+    <p>By {{ state.value }}</p>
+    <p>Published {{ article.pub_date|date:"F j, Y" }}</p>
+{% endfor %}
+
+{% endblock %}
+
+
+

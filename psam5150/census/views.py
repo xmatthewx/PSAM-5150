@@ -9,10 +9,16 @@ from django.contrib import messages
 
 from census.forms import CensusFork
 from census.models import CensusInfo
+from census.models import State
 from census.results import yourmomma
 
 def censushome(request):
-    return render_to_response('census/main.html', context_instance=RequestContext(request))
+    peoplecount = len(CensusInfo.objects.all())
+    return render_to_response(
+        'census/main.html', 
+        {'people': peoplecount}, 
+        context_instance=RequestContext(request) 
+        )
 
 
 def sitecensus(request):
@@ -28,7 +34,18 @@ def sitecensus(request):
 
 
 def censusresults(request):
-    return render_to_response('census/results.html', context_instance=RequestContext(request))
+    peoplecount = len(CensusInfo.objects.all())
+    nycount = len(State.objects.all())
+    return render_to_response('census/results.html', {'people': peoplecount, 'ny': nycount})
+
+
+#def statearchive(request, state):
+def statearchive(request):
+#    s_list = State.objects.filter(state=state)
+    s_list = State.objects.filter()
+#    return render_to_response('census/state_archive.html', {'state': state, 'people': s_list})
+    return render_to_response('census/state_archive.html', {'people': s_list})
+
     
     
 def peoplecount():

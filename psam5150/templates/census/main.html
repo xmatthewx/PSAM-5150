@@ -12,8 +12,10 @@
 
         }
         
-        a { padding:2px 4px; background:#666; color:white; text-decoration:none; }
+        a { padding:2px 4px; background:rgba(102,102,102,0.5); color:white; text-decoration:none; }
         a:hover { background:#333; }
+        
+        .messages { padding:.25em 10px; background:rgb(255,255,240);}
             
         #container { width:80%; margin:1em auto; background:#eee; border:1px solid #ddd; padding:.5em 20px; }
         label { display:block; }
@@ -25,7 +27,7 @@
     <div id="container">
         <a href="{% url census_main %}">Home</a>
         {% if messages %}
-        <ul class="messages">
+        <ul class="messages">Note:
             {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
@@ -34,6 +36,9 @@
         {% block body %}
         <ul>
             <li>Fill out the <a href="{% url site_census %}">census</a>!</li>
+            <li>{{ people }} people have filled out the census so far. Thanks!</li>
+            <li>See the <a href="{% url census_results %}">results</a>!</li>
+            
         </ul>
         {% endblock %}
     </div>
